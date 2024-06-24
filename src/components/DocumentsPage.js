@@ -72,7 +72,7 @@ const DocumentsPage = () => {
           <button
             onClick={() => {
               if (allDocsClicked) {
-                window.location.href = '/your-desired-page';
+                window.location.href = '/personal-details-form';
               }
             }}
             disabled={!allDocsClicked}
