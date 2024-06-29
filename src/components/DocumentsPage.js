@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from './Header';
 
 const DocumentsPage = () => {
   const [docsClicked, setDocsClicked] = useState({
@@ -17,11 +18,7 @@ const DocumentsPage = () => {
 
   return (
     <div>
-      <header className="bg-blue-500">
-        <div className="container mx-auto py-6 px-4">
-          <h1 className="text-white text-3xl font-bold">Easy Access Account</h1>
-        </div>
-      </header>
+      <Header />
       <div className="flex flex-col items-center justify-center h-screen bg-white">
         <div className="w-full max-w-4xl p-8 bg-white rounded shadow-lg">
           <h1 className="text-xl font-bold text-center">Important documents to review</h1>

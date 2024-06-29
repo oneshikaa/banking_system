@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -8,13 +9,13 @@ const HomePage = () => {
     navigate('/documents');
   };
 
-  const handleLoginClick = () => {
-    navigate('/login');
-  };
+  // const handleLoginClick = () => {
+  //   navigate('/login');
+  // };
 
 return (
   <div className="min-h-screen flex flex-col">
-    <header className="bg-blue-500">
+    {/* <header className="bg-blue-500">
     <div className="container mx-auto py-6 px-4 flex justify-between items-center">
           <h1 className="text-white text-3xl font-bold">Easy Access Account</h1>
           <button
@@ -24,7 +25,8 @@ return (
             Login
           </button>
         </div>
-    </header>
+    </header> */}
+    <Header />
 
     <main className="flex-1 bg-gray-100">
       <div className="container mx-auto py-12 px-4">
