@@ -12,7 +12,7 @@ import DocumentsPage from './components/DocumentsPage';
 import PhoneOTPPage from './components/PhoneOTPPage';
 import EmailOTPPage from './components/EmailOTPPage';
 import PersonalDetailsForm from './components/PersonalDetailsForm';
-
+import Dashboard from './components/Dashboard';
 function App() {
   return (
     <Router>
@@ -25,6 +25,7 @@ function App() {
         <Route path="/phone-otp" element={<PhoneOTPPage />} />
         <Route path="/email-otp" element={<EmailOTPPage />} />
         <Route path="/personal-details-form" element={<PersonalDetailsForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
           
       </Routes>
     </Router>

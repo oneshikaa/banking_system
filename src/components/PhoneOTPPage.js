@@ -7,6 +7,7 @@ import 'react-phone-input-2/lib/style.css';
 import { auth } from './firebase.config';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { toast, Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const PhoneOTPPage = () => {
   const [otp, setOtp] = useState('');
@@ -15,6 +16,8 @@ const PhoneOTPPage = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
   const [phoneNumberValid, setPhoneNumberValid] = useState(false);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handlePhoneInputChange = (value) => {
     if (value.length === 12) {
@@ -25,41 +28,18 @@ const PhoneOTPPage = () => {
     setPh(value);
   };
 
-//   function onCaptchVerify() {
-//     return new Promise((resolve, reject) => {
-//       if (!window.recaptchaVerifier) {
-//         window.recaptchaVerifier = new RecaptchaVerifier(
-//           'recaptcha-container',
-//           {
-//             size: 'invisible',
-//             callback: () => {
-//               resolve();
-//             },
-//             'expired-callback': () => {
-//               reject(new Error('Recaptcha expired. Please try again.'));
-//             },
-//           },
-//           auth
-//         );
-//         window.recaptchaVerifier.render().then(resolve).catch(reject);
-//       } else {
-//         resolve();
-//       }
-//     });
-//   }
-
   function onCaptchVerify() {
     return new Promise((resolve, reject) => {
       if (!window.recaptchaVerifier) {
         window.recaptchaVerifier = new RecaptchaVerifier(
-          "recaptcha-container",
+          'recaptcha-container',
           {
-            size: "invisible",
+            size: 'invisible',
             callback: () => {
               resolve();
             },
-            "expired-callback": () => {
-              reject(new Error("Recaptcha expired. Please try again."));
+            'expired-callback': () => {
+              reject(new Error('Recaptcha expired. Please try again.'));
             },
           },
           auth
@@ -98,6 +78,7 @@ const PhoneOTPPage = () => {
       setUser(result.user);
       setLoading(false);
       toast.success('Signup successful!');
+      navigate('/dashboard'); // Redirect to dashboard
     } catch (error) {
       console.log(error);
       setLoading(false);

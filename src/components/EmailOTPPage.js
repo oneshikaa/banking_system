@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
+import { useNavigate } from 'react-router-dom';
 
 const EmailOTPPage = () => {
   const [email, setEmail] = useState('');
@@ -7,6 +8,7 @@ const EmailOTPPage = () => {
   const [generatedOtp, setGeneratedOtp] = useState('');
   const [step, setStep] = useState(1);
   const [emailVerified, setEmailVerified] = useState(false);
+  const navigate = useNavigate();  // Use useNavigate
 
   useEffect(() => {
     emailjs.init('HOfv8qrzYwLk_5e5N');
@@ -48,7 +50,7 @@ const EmailOTPPage = () => {
   const verifyOTP = () => {
     if (otp === generatedOtp) {
       setEmailVerified(true);
-      setStep(3);
+      navigate('/dashboard');  // Redirect to dashboard
     } else {
       alert('Wrong OTP');
       setOtp('');
@@ -108,15 +110,6 @@ const EmailOTPPage = () => {
           >
             Verify OTP
           </button>
-        </div>
-      )}
-      {step === 3 && (
-        <div className="w-full h-full flex items-center justify-center">
-          <iframe
-            src="http://localhost:3000"
-            className="w-full h-full border-0"
-            title="Next Step"
-          />
         </div>
       )}
     </div>
